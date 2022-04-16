@@ -110,7 +110,7 @@ const mapDispatchToProps = (dispatch) => {
         toggleCompleteAllTodoRedux: (isCompletedAll) => dispatch(todoActions.TOGGLE_COMPLETE_ALL(isCompletedAll)),
         toggleCompleteTodoRedux: (todoComplete) => dispatch(todoActions.TOGGLE_COMPLETE(todoComplete)),
         filterTodoRedux: (type) => dispatch(todoActions.FILTER(type)),
-        clearCompletedTodoRedux: () => dispatch(todoActions.CLEAR_COMPLETED),
+        clearCompletedTodoRedux: () => dispatch(todoActions.CLEAR_COMPLETED()),
         deleteTodoRedux: (todoDelete) => dispatch(todoActions.DELETE(todoDelete))
     };
 };
