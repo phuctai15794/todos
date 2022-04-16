@@ -1,13 +1,11 @@
 const initState = {
-    todos: {
-        list: [],
-        filters: {
-            current: 'all',
-            types: {
-                all: (todo) => todo,
-                active: (todo) => !todo.isCompleted,
-                completed: (todo) => todo.isCompleted
-            }
+    list: [],
+    filters: {
+        current: 'all',
+        types: {
+            all: (todo) => todo,
+            active: (todo) => !todo.isCompleted,
+            completed: (todo) => todo.isCompleted
         }
     }
 };
@@ -15,33 +13,33 @@ const initState = {
 const rootReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD': {
-            const newTodos = [...state.todos.list, action.payload];
+            const newTodos = [...state.list, action.payload];
 
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };
         }
 
         case 'UPDATE': {
-            const newTodos = [...state.todos.list].map((todo) => {
+            const newTodos = [...state.list].map((todo) => {
                 return (todo.id === action.payload.id && action.payload) || todo;
             });
 
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };
         }
 
         case 'TOGGLE-COMPLETE-ALL': {
-            const newTodos = [...state.todos.list].map((todo) => {
+            const newTodos = [...state.list].map((todo) => {
                 todo.isCompleted = action.payload;
                 return todo;
             });
@@ -49,14 +47,14 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };
         }
 
         case 'TOGGLE-COMPLETE': {
-            const newTodos = [...state.todos.list].map((todo) => {
+            const newTodos = [...state.list].map((todo) => {
                 if (todo.id === action.payload.id) {
                     todo.isCompleted = !todo.isCompleted;
                 }
@@ -67,7 +65,7 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };
@@ -77,9 +75,9 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     filters: {
-                        ...state.todos.filters,
+                        ...state.filters,
                         current: action.payload
                     }
                 }
@@ -87,26 +85,26 @@ const rootReducer = (state = initState, action) => {
         }
 
         case 'CLEAR-COMPLETED': {
-            const newTodos = [...state.todos.list].filter(state.todos.filters.types.active);
+            const newTodos = [...state.list].filter(state.filters.types.active);
 
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };
         }
 
         case 'DELETE': {
-            const newTodos = [...state.todos.list].filter((todo) => {
+            const newTodos = [...state.list].filter((todo) => {
                 return todo.id !== action.payload.id && todo;
             });
 
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
+                    ...state,
                     list: newTodos
                 }
             };

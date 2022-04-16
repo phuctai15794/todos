@@ -113,7 +113,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        dataRedux: state.todos
+        dataRedux: state
     };
 };
 
