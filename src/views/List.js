@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import HtmlRaw from '../utils/HtmlRaw';
-import { current } from '@reduxjs/toolkit';
 
 class List extends React.Component {
     state = {

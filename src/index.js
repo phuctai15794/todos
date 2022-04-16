@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './store/reducers/rootReducer';
+import reduxStore from "./redux";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./assets/vendor/fontawesome5/css/all.min.css";
@@ -11,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={createStore(rootReducer)}>
+        <Provider store={reduxStore}>
             <App />
             <ToastContainer
                 position="top-right"
