@@ -1,16 +1,17 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 class Header extends React.Component {
     state = {
         title: ''
-    }
+    };
 
     handleOnChangeTodo = (event) => {
         this.setState({
             title: event.target.value
         });
-    }
+    };
 
     handleOnKeyPressTodo = (event) => {
         if (event.which === 13) {
@@ -20,8 +21,7 @@ class Header extends React.Component {
             if (!title) {
                 toast.error('Please enter your todo');
                 return;
-            }
-            else {
+            } else {
                 handleAddTodo({
                     id: Math.floor(Math.random() * 1000),
                     title: title
@@ -32,18 +32,42 @@ class Header extends React.Component {
                 });
             }
         }
-    }
+    };
+
+    handleChangeLanguage = (language) => {
+        const { handleChangeLanguage } = this.props;
+        handleChangeLanguage(language);
+    };
 
     render() {
         const { title } = this.state;
+        const { intl, language } = this.props;
+        const todosPlaceholder = intl.formatMessage({ id: 'app.todos.title' });
 
         return (
             <>
                 <header className="header">
                     <h1>Todos</h1>
+                    <div className="utils">
+                        <div className="languages">
+                            <span
+                                className={language === 'vi' ? 'active' : ''}
+                                onClick={() => this.handleChangeLanguage('vi')}
+                            >
+                                VI
+                            </span>
+                            {' / '}
+                            <span
+                                className={language === 'en' ? 'active' : ''}
+                                onClick={() => this.handleChangeLanguage('en')}
+                            >
+                                EN
+                            </span>
+                        </div>
+                    </div>
                     <input
                         className="new-todo"
-                        placeholder="What needs to be done?"
+                        placeholder={todosPlaceholder}
                         value={title}
                         onChange={(event) => this.handleOnChangeTodo(event)}
                         onKeyPress={(event) => this.handleOnKeyPressTodo(event)}
@@ -54,4 +78,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default injectIntl(Header);

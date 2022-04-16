@@ -1,15 +1,16 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 class Footer extends React.Component {
     handleFilterTodo = (type) => {
         const { handleFilterTodo } = this.props;
         handleFilterTodo(type);
-    }
+    };
 
     handleClearCompletedTodo = () => {
         const { handleClearCompletedTodo } = this.props;
         handleClearCompletedTodo();
-    }
+    };
 
     render() {
         const { todos, filters } = this.props;
@@ -18,37 +19,31 @@ class Footer extends React.Component {
             <>
                 <footer className="footer">
                     <span className="todo-count">
-                        <strong>{todos && todos.filter(todo => !todo.isCompleted).length}</strong> item left
+                        <strong>{todos && todos.filter((todo) => !todo.isCompleted).length}</strong>{' '}
+                        <FormattedMessage id="app.todos.items.left" />
                     </span>
                     <ul className="filters">
-                        {
-                            Object.keys(filters.types).map(type => {
-                                return (
-                                    <li key={type}>
-                                        <a
-                                            className={`${filters.current === type ? 'selected' : ''}`}
-                                            href="# "
-                                            onClick={() => this.handleFilterTodo(type)}
-                                        >
-                                            {type[0].toUpperCase() + type.slice(1)}
-                                        </a>
-                                    </li>
-                                );
-                            })
-                        }
+                        {Object.keys(filters.types).map((type) => {
+                            return (
+                                <li key={type}>
+                                    <a
+                                        className={`${filters.current === type ? 'selected' : ''}`}
+                                        href="# "
+                                        onClick={() => this.handleFilterTodo(type)}
+                                    >
+                                        <FormattedMessage id={`app.todos.items.${type}`} />
+                                    </a>
+                                </li>
+                            );
+                        })}
                     </ul>
-                    {
-                        todos && todos.some(todo => todo.isCompleted)
-                            ?
-                            <button
-                                className="clear-completed"
-                                onClick={() => this.handleClearCompletedTodo()}
-                            >
-                                Clear completed
-                            </button>
-                            :
-                            ''
-                    }
+                    {todos && todos.some((todo) => todo.isCompleted) ? (
+                        <button className="clear-completed" onClick={() => this.handleClearCompletedTodo()}>
+                            <FormattedMessage id="app.todos.actions.clear-completed" />
+                        </button>
+                    ) : (
+                        ''
+                    )}
                 </footer>
             </>
         );

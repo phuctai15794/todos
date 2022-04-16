@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { todoActions } from '../store/actions/rootActions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../assets/vendor/fontawesome5/css/all.min.css';
+import { appActions, todoActions } from '../store/actions/rootActions';
 import HtmlRaw from '../utils/HtmlRaw';
 import '../styles/App.css';
 import Header from './Header';
@@ -10,8 +13,8 @@ import Footer from './Footer';
 
 class App extends React.Component {
     handleAddTodo = (todo) => {
-        const isEmpty = Object.keys(this.props.dataRedux.list) === 0;
-        const isExist = !isEmpty && this.props.dataRedux.list.some((item) => item.title === todo.title);
+        const isEmpty = Object.keys(this.props.todo.list) === 0;
+        const isExist = !isEmpty && this.props.todo.list.some((item) => item.title === todo.title);
 
         if (!isExist) {
             this.props.addTodoRedux(todo);
@@ -72,39 +75,63 @@ class App extends React.Component {
         toast.success('Clear todos completed successfully');
     };
 
+    handleChangeLanguage = (language) => {
+        this.props.changeLanguage(language);
+    };
+
     render() {
-        const { list, filters } = this.props.dataRedux;
+        const { list, filters } = this.props.todo;
+        const language = this.props.language;
 
         return (
-            <section className="todoapp">
-                <Header handleAddTodo={this.handleAddTodo} />
-                <List
-                    todos={list}
-                    filters={filters}
-                    handleUpdateTodo={this.handleUpdateTodo}
-                    handleToggleCompleteAllTodo={this.handleToggleCompleteAllTodo}
-                    handleToggleCompleteTodo={this.handleToggleCompleteTodo}
-                    handleDeleteTodo={this.handleDeleteTodo}
+            <>
+                <section className="todoapp">
+                    <Header
+                        language={language}
+                        handleChangeLanguage={this.handleChangeLanguage}
+                        handleAddTodo={this.handleAddTodo}
+                    />
+                    <List
+                        todos={list}
+                        filters={filters}
+                        handleUpdateTodo={this.handleUpdateTodo}
+                        handleToggleCompleteAllTodo={this.handleToggleCompleteAllTodo}
+                        handleToggleCompleteTodo={this.handleToggleCompleteTodo}
+                        handleDeleteTodo={this.handleDeleteTodo}
+                    />
+                    <Footer
+                        todos={list}
+                        filters={filters}
+                        handleFilterTodo={this.handleFilterTodo}
+                        handleClearCompletedTodo={this.handleClearCompletedTodo}
+                    />
+                </section>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
                 />
-                <Footer
-                    todos={list}
-                    filters={filters}
-                    handleFilterTodo={this.handleFilterTodo}
-                    handleClearCompletedTodo={this.handleClearCompletedTodo}
-                />
-            </section>
+            </>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        dataRedux: state.todo
+        language: state.app.language,
+        todo: state.todo
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        changeLanguage: (language) => dispatch(appActions.CHANGE_LANGUAGE(language)),
         addTodoRedux: (todoNew) => dispatch(todoActions.ADD(todoNew)),
         updateTodoRedux: (todoUpdate) => dispatch(todoActions.UPDATE(todoUpdate)),
         toggleCompleteAllTodoRedux: (isCompletedAll) => dispatch(todoActions.TOGGLE_COMPLETE_ALL(isCompletedAll)),

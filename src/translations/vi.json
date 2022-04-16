@@ -1,0 +1,16 @@
+{
+    "app": {
+        "todos": {
+            "title": "Nhập những việc cần làm ?",
+            "items": {
+                "left": "mục còn lại",
+                "all": "Tất cả",
+                "active": "Chưa xong",
+                "completed": "Đã xong"
+            },
+            "actions": {
+                "clear-completed": "Xóa các mục đã xong"
+            }
+        }
+    }
+}
