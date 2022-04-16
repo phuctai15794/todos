@@ -7,6 +7,7 @@ import rootReducer from './store/reducers/rootReducer';
 const persistConfig = {
     key: 'todos',
     storage: storage,
+    whitelist: ['list'],
     stateReconciler: autoMergeLevel2
 };
 
