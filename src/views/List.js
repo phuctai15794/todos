@@ -124,7 +124,7 @@ class List extends React.Component {
                 <label htmlFor="toggle-all">Mark all as complete</label>
                 <ul className="todo-list">
                     {
-                        todos
+                        todos.length
                             ?
                             todos.filter(filters.types[filters.current]).map((todo) => {
                                 const isEditable = editTodo && editTodo.id === todo.id;

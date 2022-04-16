@@ -1,14 +1,14 @@
-import * as storage from '../../utils/Storage';
+// import * as storage from '../../utils/Storage';
 
 const initState = {
     todos: {
-        list: storage.get('TODOS'),
+        list: [],
         filters: {
             current: 'all',
             types: {
-                all: todo => todo,
-                active: todo => !todo.isCompleted,
-                completed: todo => todo.isCompleted
+                all: (todo) => todo,
+                active: (todo) => !todo.isCompleted,
+                completed: (todo) => todo.isCompleted
             }
         }
     }
@@ -18,7 +18,7 @@ const rootReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD': {
             const newTodos = [...state.todos.list, action.payload];
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,
@@ -31,10 +31,10 @@ const rootReducer = (state = initState, action) => {
 
         case 'UPDATE': {
             const newTodos = [...state.todos.list].map((todo) => {
-                return ((todo.id === action.payload.id) && action.payload) || todo;
+                return (todo.id === action.payload.id && action.payload) || todo;
             });
 
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,
@@ -51,7 +51,7 @@ const rootReducer = (state = initState, action) => {
                 return todo;
             });
 
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,
@@ -71,7 +71,7 @@ const rootReducer = (state = initState, action) => {
                 return todo;
             });
 
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,
@@ -98,7 +98,7 @@ const rootReducer = (state = initState, action) => {
         case 'CLEAR-COMPLETED': {
             const newTodos = [...state.todos.list].filter(state.todos.filters.types.active);
 
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,
@@ -114,7 +114,7 @@ const rootReducer = (state = initState, action) => {
                 return todo.id !== action.payload.id && todo;
             });
 
-            storage.set('TODOS', newTodos);
+            // storage.set('TODOS', newTodos);
 
             return {
                 ...state,

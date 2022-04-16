@@ -1,28 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import reduxStore from "./redux";
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./assets/vendor/fontawesome5/css/all.min.css";
+import './assets/vendor/fontawesome5/css/all.min.css';
 import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={reduxStore}>
-            <App />
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <App />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+            </PersistGate>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
