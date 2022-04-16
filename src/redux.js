@@ -1,18 +1,9 @@
 import { createStore } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { persistStore } from 'redux-persist';
 import rootReducer from './store/reducers/rootReducer';
 
-const persistConfig = {
-    key: 'todos',
-    storage: storage,
-    whitelist: ['list'],
-    stateReconciler: autoMergeLevel2
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-let store = createStore(persistedReducer);
+// Create store with reducer
+let store = createStore(rootReducer);
 
 export let persistor = persistStore(store);
 export default store;
