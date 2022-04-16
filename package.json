@@ -16,6 +16,7 @@
         "react-toastify": "^8.2.0",
         "redux": "^4.1.2",
         "redux-persist": "^6.0.0",
+        "redux-state-sync": "^3.1.2",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

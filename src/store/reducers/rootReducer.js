@@ -4,13 +4,13 @@ import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import todoReducer from './todoReducer';
 
-// Persist root config
+// Config persist root 
 const rootPersistConfig = {
     storage: storage,
     stateReconciler: autoMergeLevel2
 };
 
-// Persist todo config
+// Config persist todo 
 const todoPersistConfig = {
     ...rootPersistConfig,
     key: 'todos',
