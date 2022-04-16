@@ -17,10 +17,7 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
@@ -31,10 +28,7 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
@@ -46,10 +40,7 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
@@ -64,22 +55,16 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
         case 'FILTER': {
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    filters: {
-                        ...state.filters,
-                        current: action.payload
-                    }
+                filters: {
+                    ...state.filters,
+                    current: action.payload
                 }
             };
         }
@@ -89,10 +74,7 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
@@ -103,10 +85,7 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                todos: {
-                    ...state,
-                    list: newTodos
-                }
+                list: newTodos
             };
         }
 
