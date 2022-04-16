@@ -4,12 +4,12 @@ import { toast } from 'react-toastify';
 
 class Header extends React.Component {
     state = {
-        title: ''
+        title: '',
     };
 
     handleOnChangeTodo = (event) => {
         this.setState({
-            title: event.target.value
+            title: event.target.value,
         });
     };
 
@@ -24,11 +24,11 @@ class Header extends React.Component {
             } else {
                 handleAddTodo({
                     id: Math.floor(Math.random() * 1000),
-                    title: title
+                    title: title,
                 });
 
                 this.setState({
-                    title: ''
+                    title: '',
                 });
             }
         }

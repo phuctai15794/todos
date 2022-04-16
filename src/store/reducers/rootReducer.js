@@ -5,23 +5,23 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import appReducer from './appReducer';
 import todoReducer from './todoReducer';
 
-// Config persist root 
+// Config persist root
 const rootPersistConfig = {
     storage: storage,
-    stateReconciler: autoMergeLevel2
+    stateReconciler: autoMergeLevel2,
 };
 
-// Config persist app 
+// Config persist app
 const appPersistConfig = {
     ...rootPersistConfig,
-    key: 'app'
+    key: 'app',
 };
 
-// Config persist todo 
+// Config persist todo
 const todoPersistConfig = {
     ...rootPersistConfig,
     key: 'todos',
-    whitelist: ['list']
+    whitelist: ['list'],
 };
 
 // Combine reducers

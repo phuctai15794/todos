@@ -1,7 +1,7 @@
 import actionTypes from '../actions/actionTypes';
 
 const initState = {
-    language: 'vi'
+    language: 'vi',
 };
 
 const appReducer = (state = initState, action) => {
@@ -9,7 +9,7 @@ const appReducer = (state = initState, action) => {
         case actionTypes.APP.CHANGE_LANGUAGE: {
             return {
                 ...state,
-                language: action.payload
+                language: action.payload,
             };
         }
 

@@ -8,7 +8,7 @@ const configStateSync = {
     whitelist: null, // Null for sync all actions
     blacklist: null, // Null for sync all actions
     channel: 'todos',
-    broadcastChannelOption: { type: 'localstorage' }
+    broadcastChannelOption: { type: 'localstorage' },
 };
 
 // Create middlewares reducer

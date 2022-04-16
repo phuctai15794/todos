@@ -7,9 +7,9 @@ const initState = {
         types: {
             all: (todo) => todo,
             active: (todo) => !todo.isCompleted,
-            completed: (todo) => todo.isCompleted
-        }
-    }
+            completed: (todo) => todo.isCompleted,
+        },
+    },
 };
 
 const todoReducer = (state = initState, action) => {
@@ -19,7 +19,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 
@@ -30,7 +30,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 
@@ -42,7 +42,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 
@@ -57,7 +57,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 
@@ -66,8 +66,8 @@ const todoReducer = (state = initState, action) => {
                 ...state,
                 filters: {
                     ...state.filters,
-                    current: action.payload
-                }
+                    current: action.payload,
+                },
             };
         }
 
@@ -76,7 +76,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 
@@ -87,7 +87,7 @@ const todoReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                list: newTodos
+                list: newTodos,
             };
         }
 

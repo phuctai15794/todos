@@ -5,7 +5,7 @@ const flattenMessages = (nestedMessages, prefix = '') => {
     if (nestedMessages == null) {
         return {};
     }
-    
+
     return Object.keys(nestedMessages).reduce((messages, key) => {
         const value = nestedMessages[key];
         const prefixedKey = prefix ? `${prefix}.${key}` : key;
@@ -22,7 +22,7 @@ const flattenMessages = (nestedMessages, prefix = '') => {
 
 const messages = {
     vi: flattenMessages(messages_vi),
-    en: flattenMessages(messages_en)
+    en: flattenMessages(messages_en),
 };
 
 export default messages;

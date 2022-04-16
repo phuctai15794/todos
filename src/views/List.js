@@ -7,24 +7,24 @@ import HtmlRaw from '../utils/HtmlRaw';
 class List extends React.Component {
     state = {
         nowTodo: {},
-        editTodo: {}
-    }
+        editTodo: {},
+    };
 
     handleEditTodo = (todo) => {
         this.setState({
             nowTodo: todo,
-            editTodo: todo
+            editTodo: todo,
         });
-    }
+    };
 
     handleOnChangeEditTodo = (event) => {
         const newTodo = { ...this.state.editTodo };
         newTodo.title = event.target.value;
 
         this.setState({
-            editTodo: newTodo
+            editTodo: newTodo,
         });
-    }
+    };
 
     handleOnKeyPressEditTodo = (event) => {
         if (event.which === 13) {
@@ -39,16 +39,16 @@ class List extends React.Component {
 
             this.setState({
                 nowTodo: {},
-                editTodo: {}
+                editTodo: {},
             });
         }
-    }
+    };
 
     handleToggleCompleteAllTodo = (event) => {
         const isCompletedAll = event.target.checked;
         const { handleToggleCompleteAllTodo } = this.props;
         handleToggleCompleteAllTodo(isCompletedAll);
-    }
+    };
 
     handleToggleCompleteTodo = (todo) => {
         if (todo) {
@@ -57,7 +57,7 @@ class List extends React.Component {
         } else {
             toast.error('Data is invalid');
         }
-    }
+    };
 
     handleDeleteTodo = (todo) => {
         if (todo) {
@@ -82,30 +82,30 @@ class List extends React.Component {
                         className: 'btn btn-sm btn-danger',
                         onClick: () => {
                             handleDeleteTodo(todo);
-                        }
-                    }
-                ]
+                        },
+                    },
+                ],
             });
         } else {
             toast.error('Data is invalid');
         }
-    }
+    };
 
     handleESC = (event) => {
         if (event.which === 27) {
             this.setState({
                 nowTodo: {},
-                editTodo: {}
+                editTodo: {},
             });
         }
-    }
+    };
 
     componentDidMount() {
-        document.addEventListener("keydown", this.handleESC);
+        document.addEventListener('keydown', this.handleESC);
     }
 
     componentWillUnmount() {
-        document.removeEventListener("keydown", this.handleESC);
+        document.removeEventListener('keydown', this.handleESC);
     }
 
     render() {
@@ -118,65 +118,54 @@ class List extends React.Component {
                     id="toggle-all"
                     className="toggle-all"
                     type="checkbox"
-                    checked={todos.every(todo => todo.isCompleted === true) && 'checked'}
+                    checked={todos.every((todo) => todo.isCompleted === true) && 'checked'}
                     onChange={(event) => this.handleToggleCompleteAllTodo(event)}
                 />
                 <label htmlFor="toggle-all">Mark all as complete</label>
                 <ul className="todo-list">
-                    {
-                        todos.length
-                            ?
-                            todos.filter(filters.types[filters.current]).map((todo) => {
-                                const isEditable = editTodo && editTodo.id === todo.id;
-                                const isCompleted = todo.isCompleted;
+                    {todos.length
+                        ? todos.filter(filters.types[filters.current]).map((todo) => {
+                              const isEditable = editTodo && editTodo.id === todo.id;
+                              const isCompleted = todo.isCompleted;
 
-                                return (
-                                    <li className={`${isEditable ? 'editing' : ''} ${isCompleted ? 'completed' : ''}`} key={todo.id}>
-                                        <div className="view">
-                                            <input
-                                                className="toggle"
-                                                type="checkbox"
-                                                checked={`${isCompleted ? 'checked' : ''}`}
-                                                onChange={() => this.handleToggleCompleteTodo(todo)}
-                                            />
-                                            <label>{todo.title}</label>
-                                            {
-                                                !isCompleted
-                                                    ?
-                                                    <button
-                                                        className="edit"
-                                                        onClick={() => this.handleEditTodo(todo)}
-                                                    >
-                                                        <i className="fas fa-edit"></i>
-                                                    </button>
-                                                    :
-                                                    ''
-                                            }
-                                            <button
-                                                className="destroy"
-                                                onClick={() => this.handleDeleteTodo(todo)}
-                                            >
-                                                <i className="fas fa-times"></i>
-                                            </button>
-                                        </div>
-                                        {
-                                            isEditable && !isCompleted
-                                                ?
-                                                <input
-                                                    className="edit-input"
-                                                    value={editTodo.title}
-                                                    onChange={(event) => this.handleOnChangeEditTodo(event)}
-                                                    onKeyPress={(event) => this.handleOnKeyPressEditTodo(event)}
-                                                />
-                                                :
-                                                ''
-                                        }
-                                    </li>
-                                );
-                            })
-                            :
-                            ''
-                    }
+                              return (
+                                  <li
+                                      className={`${isEditable ? 'editing' : ''} ${isCompleted ? 'completed' : ''}`}
+                                      key={todo.id}
+                                  >
+                                      <div className="view">
+                                          <input
+                                              className="toggle"
+                                              type="checkbox"
+                                              checked={`${isCompleted ? 'checked' : ''}`}
+                                              onChange={() => this.handleToggleCompleteTodo(todo)}
+                                          />
+                                          <label>{todo.title}</label>
+                                          {!isCompleted ? (
+                                              <button className="edit" onClick={() => this.handleEditTodo(todo)}>
+                                                  <i className="fas fa-edit"></i>
+                                              </button>
+                                          ) : (
+                                              ''
+                                          )}
+                                          <button className="destroy" onClick={() => this.handleDeleteTodo(todo)}>
+                                              <i className="fas fa-times"></i>
+                                          </button>
+                                      </div>
+                                      {isEditable && !isCompleted ? (
+                                          <input
+                                              className="edit-input"
+                                              value={editTodo.title}
+                                              onChange={(event) => this.handleOnChangeEditTodo(event)}
+                                              onKeyPress={(event) => this.handleOnKeyPressEditTodo(event)}
+                                          />
+                                      ) : (
+                                          ''
+                                      )}
+                                  </li>
+                              );
+                          })
+                        : ''}
                 </ul>
             </section>
         );
