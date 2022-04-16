@@ -6,8 +6,8 @@ import rootReducer from './store/reducers/rootReducer';
 
 // Config state sync
 const configStateSync = {
-    whitelist: null, // Null for syn all state
-    blacklist: null // Null for syn all state
+    whitelist: null, // Null for sync all actions
+    blacklist: null // Null for sync all actions
 };
 
 // Create middlewares reducer
