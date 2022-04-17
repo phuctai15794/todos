@@ -7,27 +7,27 @@ import todoReducer from './todoReducer';
 
 // Config persist root
 const rootPersistConfig = {
-    storage: storage,
-    stateReconciler: autoMergeLevel2,
+	storage: storage,
+	stateReconciler: autoMergeLevel2,
 };
 
 // Config persist app
 const appPersistConfig = {
-    ...rootPersistConfig,
-    key: 'app',
+	...rootPersistConfig,
+	key: 'app',
 };
 
 // Config persist todo
 const todoPersistConfig = {
-    ...rootPersistConfig,
-    key: 'todos',
-    whitelist: ['list'],
+	...rootPersistConfig,
+	key: 'todos',
+	whitelist: ['list'],
 };
 
 // Combine reducers
 const rootReducer = combineReducers({
-    app: persistReducer(appPersistConfig, appReducer),
-    todo: persistReducer(todoPersistConfig, todoReducer),
+	app: persistReducer(appPersistConfig, appReducer),
+	todo: persistReducer(todoPersistConfig, todoReducer),
 });
 
 export default rootReducer;

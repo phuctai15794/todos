@@ -8,16 +8,16 @@ import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <IntlProviderHoC>
-                    <App />
-                </IntlProviderHoC>
-            </PersistGate>
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'),
+	<React.StrictMode>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<IntlProviderHoC>
+					<App />
+				</IntlProviderHoC>
+			</PersistGate>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

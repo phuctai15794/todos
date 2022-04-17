@@ -5,10 +5,10 @@ import rootReducer from './store/reducers/rootReducer';
 
 // Config state sync
 const configStateSync = {
-    whitelist: null, // Null for sync all actions
-    blacklist: null, // Null for sync all actions
-    channel: 'todos',
-    broadcastChannelOption: { type: 'localstorage' },
+	whitelist: null, // Null for sync all actions
+	blacklist: null, // Null for sync all actions
+	channel: 'todos',
+	broadcastChannelOption: { type: 'localstorage' },
 };
 
 // Create middlewares reducer
