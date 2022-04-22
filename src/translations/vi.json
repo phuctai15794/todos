@@ -11,6 +11,10 @@
 			"actions": {
 				"clear-completed": "Xóa các mục đã xong"
 			}
+		},
+		"user": {
+			"hello": "Xin chào",
+			"logout": "Đăng xuất"
 		}
 	}
 }

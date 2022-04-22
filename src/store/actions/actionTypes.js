@@ -4,6 +4,7 @@ const actionTypes = Object.freeze({
 
 	// User
 	USER_LOGIN: 'USER_LOGIN',
+	USER_LOGOUT: 'USER_LOGOUT',
 
 	// Todos
 	TODOS_ADD: 'ADD',

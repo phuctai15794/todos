@@ -11,6 +11,10 @@
 			"actions": {
 				"clear-completed": "Clear completed"
 			}
+		},
+		"user": {
+			"hello": "Hello",
+			"logout": "Logout"
 		}
 	}
 }

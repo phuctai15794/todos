@@ -1,6 +1,8 @@
 import React from 'react';
-import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
+import { userActions } from '../../store/actions/rootActions';
 
 class Header extends React.Component {
 	state = {
@@ -41,7 +43,7 @@ class Header extends React.Component {
 
 	render() {
 		const { title } = this.state;
-		const { intl, language } = this.props;
+		const { isLoggedIn, userInfo, intl, language, LogoutUser } = this.props;
 		const todosPlaceholder = intl.formatMessage({ id: 'app.todos.title' });
 
 		return (
@@ -64,6 +66,19 @@ class Header extends React.Component {
 								EN
 							</span>
 						</div>
+						{isLoggedIn ? (
+							<div className="user">
+								<span className="user-hello">
+									<FormattedMessage id="app.user.hello" />,{' '}
+									<strong>{userInfo && userInfo.fullName}</strong>!
+								</span>
+								<a className="user-logout text-danger ms-2" href="# " onClick={LogoutUser}>
+									<FormattedMessage id="app.user.logout" />
+								</a>
+							</div>
+						) : (
+							''
+						)}
 					</div>
 					<input
 						className="new-todo"
@@ -78,4 +93,17 @@ class Header extends React.Component {
 	}
 }
 
-export default injectIntl(Header);
+const mapStateToProps = (state) => {
+	return {
+		isLoggedIn: state.user.isLoggedIn,
+		userInfo: state.user.userInfo,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		LogoutUser: () => dispatch(userActions.userLogout()),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Header));
