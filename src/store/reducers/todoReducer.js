@@ -14,7 +14,7 @@ const initState = {
 
 const todoReducer = (state = initState, action) => {
 	switch (action.type) {
-		case actionTypes.TODOS.ADD: {
+		case actionTypes.TODOS_ADD: {
 			const newTodos = [...state.list, action.payload];
 
 			return {
@@ -23,7 +23,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.UPDATE: {
+		case actionTypes.TODOS_UPDATE: {
 			const newTodos = [...state.list].map((todo) => {
 				return (todo.id === action.payload.id && action.payload) || todo;
 			});
@@ -34,7 +34,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.TOGGLE_COMPLETE_ALL: {
+		case actionTypes.TODOS_TOGGLE_COMPLETE_ALL: {
 			const newTodos = [...state.list].map((todo) => {
 				todo.isCompleted = action.payload;
 				return todo;
@@ -46,7 +46,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.TOGGLE_COMPLETE: {
+		case actionTypes.TODOS_TOGGLE_COMPLETE: {
 			const newTodos = [...state.list].map((todo) => {
 				if (todo.id === action.payload.id) {
 					todo.isCompleted = !todo.isCompleted;
@@ -61,7 +61,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.FILTER: {
+		case actionTypes.TODOS_FILTER: {
 			return {
 				...state,
 				filters: {
@@ -71,7 +71,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.CLEAR_COMPLETED: {
+		case actionTypes.TODOS_CLEAR_COMPLETED: {
 			const newTodos = [...state.list].filter(state.filters.types.active);
 
 			return {
@@ -80,7 +80,7 @@ const todoReducer = (state = initState, action) => {
 			};
 		}
 
-		case actionTypes.TODOS.DELETE: {
+		case actionTypes.TODOS_DELETE: {
 			const newTodos = [...state.list].filter((todo) => {
 				return todo.id !== action.payload.id && todo;
 			});

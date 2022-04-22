@@ -10,7 +10,7 @@ export const userIsAuthenticated = connectedRouterRedirect({
 	// For example let's check that state contains user data
 	authenticatedSelector: (state) => state.user.isLoggedIn,
 	// A nice display name for this check
-	wrapperDisplayName: 'UserIsAuthenticated'
+	wrapperDisplayName: 'UserIsAuthenticated',
 });
 
 export const userIsNotAuthenticated = connectedRouterRedirect({
@@ -22,5 +22,5 @@ export const userIsNotAuthenticated = connectedRouterRedirect({
 	// So if there is no user data, then we show the page
 	authenticatedSelector: (state) => !state.user.isLoggedIn,
 	// A nice display name for this check
-	wrapperDisplayName: 'UserIsNotAuthenticated'
+	wrapperDisplayName: 'UserIsNotAuthenticated',
 });

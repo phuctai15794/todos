@@ -77,8 +77,8 @@ class App extends React.Component {
 	};
 
 	render() {
-		const { list, filters } = this.props.todo;
 		const language = this.props.language;
+		const { list, filters } = this.props.todo;
 
 		return (
 			<>
@@ -111,7 +111,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
-		todo: state.todo
+		todo: state.todo,
 	};
 };
 
@@ -124,7 +124,7 @@ const mapDispatchToProps = (dispatch) => {
 		toggleCompleteTodoRedux: (todoComplete) => dispatch(todoActions.TOGGLE_COMPLETE(todoComplete)),
 		filterTodoRedux: (type) => dispatch(todoActions.FILTER(type)),
 		clearCompletedTodoRedux: () => dispatch(todoActions.CLEAR_COMPLETED()),
-		deleteTodoRedux: (todoDelete) => dispatch(todoActions.DELETE(todoDelete))
+		deleteTodoRedux: (todoDelete) => dispatch(todoActions.DELETE(todoDelete)),
 	};
 };
 

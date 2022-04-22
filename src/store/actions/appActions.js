@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 
 export const CHANGE_LANGUAGE = (language) => ({
-	type: actionTypes.APP.CHANGE_LANGUAGE,
+	type: actionTypes.APP_CHANGE_LANGUAGE,
 	payload: language,
 });

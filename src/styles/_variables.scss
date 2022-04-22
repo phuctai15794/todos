@@ -1,0 +1,41 @@
+// Variables
+$fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$fontSize: 14px;
+$lineHeight: 1.5;
+
+// Mixin
+@mixin flex($alignItems: '', $justifyContent: '', $direction: '', $wrap: false) {
+	display: flex;
+
+	@if $wrap {
+		flex-wrap: wrap;
+	}
+
+	@if $direction != '' {
+		flex-direction: $direction;
+	}
+
+	@if $alignItems != '' {
+		align-items: $alignItems;
+	}
+
+	@if $justifyContent != '' {
+		justify-content: $justifyContent;
+	}
+}
+
+@mixin background($image, $size: '', $repeat: '', $position: '') {
+	background-image: $image;
+
+	@if $size != '' {
+		background-size: $size;
+	}
+
+	@if $repeat != '' {
+		background-repeat: $repeat;
+	}
+
+	@if $position != '' {
+		background-position: $position;
+	}
+}

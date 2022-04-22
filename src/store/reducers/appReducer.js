@@ -6,7 +6,7 @@ const initState = {
 
 const appReducer = (state = initState, action) => {
 	switch (action.type) {
-		case actionTypes.APP.CHANGE_LANGUAGE: {
+		case actionTypes.APP_CHANGE_LANGUAGE: {
 			return {
 				...state,
 				language: action.payload,

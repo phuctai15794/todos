@@ -38,9 +38,13 @@ class Footer extends React.Component {
 						})}
 					</ul>
 					{todos && todos.some((todo) => todo.isCompleted) ? (
-						<button className="clear-completed" onClick={() => this.handleClearCompletedTodo()}>
+						<a
+							className="clear-completed text-decoration-none text-secondary"
+							href="# "
+							onClick={() => this.handleClearCompletedTodo()}
+						>
 							<FormattedMessage id="app.todos.actions.clear-completed" />
-						</button>
+						</a>
 					) : (
 						''
 					)}

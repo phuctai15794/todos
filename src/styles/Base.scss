@@ -1,9 +1,13 @@
-html, body {
+@import 'variables';
+
+html,
+body {
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	line-height: 1.5;
+	font-family: $fontFamily;
+	line-height: $lineHeight;
+	font-size: $fontSize;
 }

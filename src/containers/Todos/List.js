@@ -142,15 +142,19 @@ class List extends React.Component {
 											/>
 											<label>{todo.title}</label>
 											{!isCompleted ? (
-												<button className="edit" onClick={() => this.handleEditTodo(todo)}>
+												<a className="edit" href="# " onClick={() => this.handleEditTodo(todo)}>
 													<i className="fas fa-edit"></i>
-												</button>
+												</a>
 											) : (
 												''
 											)}
-											<button className="destroy" onClick={() => this.handleDeleteTodo(todo)}>
+											<a
+												className="destroy"
+												href="# "
+												onClick={() => this.handleDeleteTodo(todo)}
+											>
 												<i className="fas fa-times"></i>
-											</button>
+											</a>
 										</div>
 										{isEditable && !isCompleted ? (
 											<input
