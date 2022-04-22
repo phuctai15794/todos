@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './redux';
 import IntlProviderHoC from './hoc/IntlProviderHoC';
-import App from './views/App';
+import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -17,7 +17,7 @@ ReactDOM.render(
 			</PersistGate>
 		</Provider>
 	</React.StrictMode>,
-	document.getElementById('root'),
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

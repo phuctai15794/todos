@@ -1,6 +1,9 @@
 const actionTypes = Object.freeze({
 	APP: {
-		CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
+		CHANGE_LANGUAGE: 'CHANGE_LANGUAGE'
+	},
+	USER: {
+		USER_LOGIN: 'USER_LOGIN'
 	},
 	TODOS: {
 		ADD: 'ADD',
@@ -9,8 +12,8 @@ const actionTypes = Object.freeze({
 		TOGGLE_COMPLETE: 'TOGGLE_COMPLETE',
 		FILTER: 'FILTER',
 		CLEAR_COMPLETED: 'CLEAR_COMPLETED',
-		DELETE: 'DELETE',
-	},
+		DELETE: 'DELETE'
+	}
 });
 
 export default actionTypes;

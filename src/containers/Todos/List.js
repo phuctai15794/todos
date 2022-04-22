@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import HtmlRaw from '../utils/HtmlRaw';
+import HtmlRaw from '../../utils/HtmlRaw';
 
 class List extends React.Component {
 	state = {

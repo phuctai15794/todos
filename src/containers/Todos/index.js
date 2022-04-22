@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import '../assets/vendor/fontawesome5/css/all.min.css';
-import { appActions, todoActions } from '../store/actions/rootActions';
-import HtmlRaw from '../utils/HtmlRaw';
-import '../styles/App.css';
+import { appActions, todoActions } from '../../store/actions/rootActions';
+import HtmlRaw from '../../utils/HtmlRaw';
+import '../../styles/Todos.scss';
 import Header from './Header';
 import List from './List';
 import Footer from './Footer';
@@ -106,17 +103,6 @@ class App extends React.Component {
 						handleClearCompletedTodo={this.handleClearCompletedTodo}
 					/>
 				</section>
-				<ToastContainer
-					position="top-right"
-					autoClose={5000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-				/>
 			</>
 		);
 	}
@@ -125,7 +111,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
-		todo: state.todo,
+		todo: state.todo
 	};
 };
 
@@ -138,7 +124,7 @@ const mapDispatchToProps = (dispatch) => {
 		toggleCompleteTodoRedux: (todoComplete) => dispatch(todoActions.TOGGLE_COMPLETE(todoComplete)),
 		filterTodoRedux: (type) => dispatch(todoActions.FILTER(type)),
 		clearCompletedTodoRedux: () => dispatch(todoActions.CLEAR_COMPLETED()),
-		deleteTodoRedux: (todoDelete) => dispatch(todoActions.DELETE(todoDelete)),
+		deleteTodoRedux: (todoDelete) => dispatch(todoActions.DELETE(todoDelete))
 	};
 };
 
