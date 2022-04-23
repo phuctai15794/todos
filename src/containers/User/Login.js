@@ -11,7 +11,7 @@ import {
 	InputGroup,
 	Input,
 	InputGroupText,
-	Button,
+	Button
 } from 'reactstrap';
 import { userLoginService } from '../../services/userService';
 import '../../styles/Login.scss';
@@ -23,19 +23,19 @@ class Login extends React.Component {
 		isShowPassword: false,
 		message: {
 			text: '',
-			type: '',
-		},
+			type: ''
+		}
 	};
 
 	handleOnChangeLogin = (event, type) => {
 		this.setState({
-			[type]: event.target.value,
+			[type]: event.target.value
 		});
 	};
 
 	handleOnClickShowHidePassword = () => {
 		this.setState({
-			isShowPassword: !this.state.isShowPassword,
+			isShowPassword: !this.state.isShowPassword
 		});
 	};
 
@@ -46,8 +46,8 @@ class Login extends React.Component {
 			this.setState({
 				message: {
 					type: '',
-					text: '',
-				},
+					text: ''
+				}
 			});
 		}
 	};
@@ -56,7 +56,7 @@ class Login extends React.Component {
 		let isValid = true;
 		let message = {
 			text: '',
-			type: '',
+			type: ''
 		};
 		const { username, password } = this.state;
 
@@ -84,7 +84,7 @@ class Login extends React.Component {
 
 		if (message.text !== '') {
 			this.setState({
-				message,
+				message
 			});
 		}
 	};
@@ -140,6 +140,7 @@ class Login extends React.Component {
 									</InputGroup>
 								</FormGroup>
 								<Button
+									color="primary"
 									onClick={() => {
 										this.handleLogin();
 									}}
@@ -161,7 +162,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		LoginUser: (userInfo) => dispatch(userActions.userLogin(userInfo)),
+		LoginUser: (userInfo) => dispatch(userActions.userLogin(userInfo))
 	};
 };
 
