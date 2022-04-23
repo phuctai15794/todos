@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { userActions } from '../../store/actions/rootActions';
 import {
 	Card,
@@ -11,7 +13,7 @@ import {
 	InputGroup,
 	Input,
 	InputGroupText,
-	Button
+	Button,
 } from 'reactstrap';
 import { userLoginService } from '../../services/userService';
 import '../../styles/Login.scss';
@@ -23,19 +25,19 @@ class Login extends React.Component {
 		isShowPassword: false,
 		message: {
 			text: '',
-			type: ''
-		}
+			type: '',
+		},
 	};
 
 	handleOnChangeLogin = (event, type) => {
 		this.setState({
-			[type]: event.target.value
+			[type]: event.target.value,
 		});
 	};
 
 	handleOnClickShowHidePassword = () => {
 		this.setState({
-			isShowPassword: !this.state.isShowPassword
+			isShowPassword: !this.state.isShowPassword,
 		});
 	};
 
@@ -46,8 +48,8 @@ class Login extends React.Component {
 			this.setState({
 				message: {
 					type: '',
-					text: ''
-				}
+					text: '',
+				},
 			});
 		}
 	};
@@ -56,17 +58,17 @@ class Login extends React.Component {
 		let isValid = true;
 		let message = {
 			text: '',
-			type: ''
+			type: '',
 		};
 		const { username, password } = this.state;
 
 		if (!username) {
 			isValid = false;
-			message.text = 'Please enter your username';
+			message.text = 'app.user.please-enter-your-username';
 			message.type = 'error';
 		} else if (!password) {
 			isValid = false;
-			message.text = 'Please enter your password';
+			message.text = 'app.user.please-enter-your-password';
 			message.type = 'error';
 		}
 
@@ -84,23 +86,31 @@ class Login extends React.Component {
 
 		if (message.text !== '') {
 			this.setState({
-				message
+				message,
 			});
 		}
 	};
 
 	render() {
 		const { username, password, isShowPassword, message } = this.state;
+		const { intl } = this.props;
+		const langPlaceholders = {
+			username: intl.formatMessage({ id: 'app.user.enter-your-username' }),
+			password: intl.formatMessage({ id: 'app.user.enter-your-password' }),
+		};
+		const langMessage = message.text && intl.formatMessage({ id: message.text });
 
 		return (
 			<>
 				<div className="section-login">
 					<Card>
-						<CardHeader>Login</CardHeader>
+						<CardHeader>
+							<FormattedMessage id="app.user.login" />
+						</CardHeader>
 						<CardBody>
-							{message.text ? (
+							{langMessage ? (
 								<div className={`alert alert-${message.type === 'error' ? 'danger' : 'success'}`}>
-									{message.text}
+									{langMessage}
 								</div>
 							) : (
 								''
@@ -108,13 +118,15 @@ class Login extends React.Component {
 							<Form>
 								<FormGroup>
 									<Label for="username">
-										<strong>Username:</strong>
+										<strong>
+											<FormattedMessage id="app.user.username" />:
+										</strong>
 									</Label>
 									<Input
 										type="text"
 										id="username"
 										name="username"
-										placeholder="Enter your username"
+										placeholder={langPlaceholders.username}
 										value={username}
 										onChange={(event) => this.handleOnChangeLogin(event, 'username')}
 										onKeyPress={(event) => this.handleOnKeyPressLogin(event)}
@@ -122,14 +134,16 @@ class Login extends React.Component {
 								</FormGroup>
 								<FormGroup>
 									<Label for="password">
-										<strong>Password:</strong>
+										<strong>
+											<FormattedMessage id="app.user.password" />:
+										</strong>
 									</Label>
 									<InputGroup>
 										<Input
 											type={isShowPassword ? 'text' : 'password'}
 											id="password"
 											name="password"
-											placeholder="Enter your password"
+											placeholder={langPlaceholders.password}
 											value={password}
 											onChange={(event) => this.handleOnChangeLogin(event, 'password')}
 											onKeyPress={(event) => this.handleOnKeyPressLogin(event)}
@@ -139,14 +153,21 @@ class Login extends React.Component {
 										</InputGroupText>
 									</InputGroup>
 								</FormGroup>
-								<Button
-									color="primary"
-									onClick={() => {
-										this.handleLogin();
-									}}
-								>
-									Login
-								</Button>
+								<div className="text-center">
+									<Button
+										className="mb-2"
+										color="primary"
+										onClick={() => {
+											this.handleLogin();
+										}}
+									>
+										<FormattedMessage id="app.user.login" />
+									</Button>
+									<br />
+									<NavLink className="text-secondary" to="">
+										<FormattedMessage id="app.others.back-to-home" />
+									</NavLink>
+								</div>
 							</Form>
 						</CardBody>
 					</Card>
@@ -162,8 +183,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		LoginUser: (userInfo) => dispatch(userActions.userLogin(userInfo))
+		LoginUser: (userInfo) => dispatch(userActions.userLogin(userInfo)),
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Login));

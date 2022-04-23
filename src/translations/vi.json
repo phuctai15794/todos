@@ -3,6 +3,9 @@
 		"menu": {
 			"home": "Trang chủ"
 		},
+		"others": {
+			"back-to-home": "Trở về trang chủ"
+		},
 		"todos": {
 			"title": "Nhập những việc cần làm ?",
 			"items": {
@@ -17,6 +20,13 @@
 		},
 		"user": {
 			"hello": "Xin chào",
+			"username": "Tên đăng nhập",
+			"enter-your-username": "Nhập tên đăng nhập của bạn",
+			"please-enter-your-username": "Vui lòng nhập tên đăng nhập",
+			"password": "Mật khẩu",
+			"enter-your-password": "Nhập mật khẩu của bạn",
+			"please-enter-your-password": "Vui lòng nhập mật khẩu",
+			"login": "Đăng nhập",
 			"logout": "Đăng xuất"
 		}
 	}

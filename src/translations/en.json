@@ -3,6 +3,9 @@
 		"menu": {
 			"home": "Home"
 		},
+		"others": {
+			"back-to-home": "Back to home"
+		},
 		"todos": {
 			"title": "What needs to be done ?",
 			"items": {
@@ -17,6 +20,13 @@
 		},
 		"user": {
 			"hello": "Hello",
+			"username": "Username",
+			"enter-your-username": "Enter your username",
+			"please-enter-your-username": "Please enter your username",
+			"password": "Password",
+			"enter-your-password": "Enter your password",
+			"please-enter-your-password": "Please enter your password",
+			"login": "Login",
 			"logout": "Logout"
 		}
 	}

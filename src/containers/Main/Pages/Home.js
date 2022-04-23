@@ -62,7 +62,7 @@ class Home extends Component {
 						</p>
 					</div>
 					<div className="text-center">
-						<NavLink to="/todos" className="btn btn-primary">
+						<NavLink className="btn btn-primary" to="/todos">
 							Let's go
 						</NavLink>
 					</div>
