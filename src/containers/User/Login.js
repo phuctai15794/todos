@@ -39,6 +39,19 @@ class Login extends React.Component {
 		});
 	};
 
+	handleOnKeyPressLogin = (event) => {
+		if (event.which === 13) {
+			this.handleLogin();
+		} else {
+			this.setState({
+				message: {
+					type: '',
+					text: '',
+				},
+			});
+		}
+	};
+
 	handleLogin = () => {
 		let isValid = true;
 		let message = {
@@ -104,6 +117,7 @@ class Login extends React.Component {
 										placeholder="Enter your username"
 										value={username}
 										onChange={(event) => this.handleOnChangeLogin(event, 'username')}
+										onKeyPress={(event) => this.handleOnKeyPressLogin(event)}
 									/>
 								</FormGroup>
 								<FormGroup>
@@ -118,6 +132,7 @@ class Login extends React.Component {
 											placeholder="Enter your password"
 											value={password}
 											onChange={(event) => this.handleOnChangeLogin(event, 'password')}
+											onKeyPress={(event) => this.handleOnKeyPressLogin(event)}
 										/>
 										<InputGroupText onClick={() => this.handleOnClickShowHidePassword()}>
 											<i className={`fas ${isShowPassword ? ' fa-eye-slash' : 'fa-eye'}`}></i>

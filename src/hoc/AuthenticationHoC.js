@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Redirect } from 'react-router-dom';
 
-export const isAuthenticated = (Component) => {
+export const isAuthenticatedHoC = (Component) => {
 	class CheckAuthenticated extends React.Component {
 		render() {
 			const { isLoggedIn, location } = this.props;
@@ -25,7 +25,7 @@ export const isAuthenticated = (Component) => {
 	return connect(mapStateToProps, mapDispatchToProps)(withRouter(CheckAuthenticated));
 };
 
-export const isNotAuthenticated = (Component) => {
+export const isNotAuthenticatedHoC = (Component) => {
 	class CheckAuthenticated extends React.Component {
 		render() {
 			const { isLoggedIn, location } = this.props;
