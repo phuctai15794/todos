@@ -1,5 +1,8 @@
 {
 	"app": {
+		"menu": {
+			"home": "Home"
+		},
 		"todos": {
 			"title": "What needs to be done ?",
 			"items": {

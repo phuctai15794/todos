@@ -1,5 +1,8 @@
 {
 	"app": {
+		"menu": {
+			"home": "Trang chủ"
+		},
 		"todos": {
 			"title": "Nhập những việc cần làm ?",
 			"items": {

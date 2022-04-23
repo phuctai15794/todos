@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/fontawesome5/css/all.min.css';
 import '../styles/Base.scss';
-import Page from './Layouts/Page';
+import Main from './Main';
 import Login from './User/Login';
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
 				<Router>
 					<Switch>
 						<Route path="/login" component={isNotAuthenticatedHoC(Login)} />
-						<Route path="/" component={Page} />
+						<Route path="/" component={Main} />
 					</Switch>
 				</Router>
 				<ToastContainer

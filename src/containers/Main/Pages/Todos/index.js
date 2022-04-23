@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { appActions, todoActions } from '../../store/actions/rootActions';
-import HtmlRaw from '../../utils/HtmlRaw';
-import '../../styles/Todos.scss';
+import { todoActions } from '../../../../store/actions/rootActions';
+import HtmlRaw from '../../../../utils/HtmlRaw';
+import '../../../../styles/Todos.scss';
 import Header from './Header';
 import List from './List';
 import Footer from './Footer';
@@ -72,12 +72,7 @@ class App extends React.Component {
 		toast.success('Clear todos completed successfully');
 	};
 
-	handleChangeLanguage = (language) => {
-		this.props.changeLanguage(language);
-	};
-
 	render() {
-		const language = this.props.language;
 		const { list, filters } = this.props.todo;
 
 		return (
@@ -85,11 +80,7 @@ class App extends React.Component {
 				<h2 className="title-main">Todos</h2>
 				<div className="content-main">
 					<section className="todoapp">
-						<Header
-							language={language}
-							handleChangeLanguage={this.handleChangeLanguage}
-							handleAddTodo={this.handleAddTodo}
-						/>
+						<Header handleAddTodo={this.handleAddTodo} />
 						<List
 							todos={list}
 							filters={filters}
@@ -113,14 +104,12 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		language: state.app.language,
 		todo: state.todo,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		changeLanguage: (language) => dispatch(appActions.CHANGE_LANGUAGE(language)),
 		addTodoRedux: (todoNew) => dispatch(todoActions.ADD(todoNew)),
 		updateTodoRedux: (todoUpdate) => dispatch(todoActions.UPDATE(todoUpdate)),
 		toggleCompleteAllTodoRedux: (isCompletedAll) => dispatch(todoActions.TOGGLE_COMPLETE_ALL(isCompletedAll)),
