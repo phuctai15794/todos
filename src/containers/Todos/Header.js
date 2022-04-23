@@ -49,7 +49,6 @@ class Header extends React.Component {
 		return (
 			<>
 				<header className="header">
-					<h1>Todos</h1>
 					<div className="utils">
 						<div className="languages">
 							<span

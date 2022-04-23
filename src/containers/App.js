@@ -1,13 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { isAuthenticatedHoC, isNotAuthenticatedHoC } from '../hoc/AuthenticationHoC';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { isNotAuthenticatedHoC } from '../hoc/AuthenticationHoC';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/fontawesome5/css/all.min.css';
 import '../styles/Base.scss';
-import Home from './Layouts/Home';
-import Todos from './Todos';
+import Page from './Layouts/Page';
 import Login from './User/Login';
 
 class App extends React.Component {
@@ -15,9 +14,10 @@ class App extends React.Component {
 		return (
 			<>
 				<Router>
-					<Route path="/" exact component={isAuthenticatedHoC(Home)} />
-					<Route path="/login" component={isNotAuthenticatedHoC(Login)} />
-					<Route path="/todos" component={isAuthenticatedHoC(Todos)} />
+					<Switch>
+						<Route path="/login" component={isNotAuthenticatedHoC(Login)} />
+						<Route path="/" component={Page} />
+					</Switch>
 				</Router>
 				<ToastContainer
 					position="top-right"

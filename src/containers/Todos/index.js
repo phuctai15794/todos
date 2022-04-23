@@ -82,27 +82,30 @@ class App extends React.Component {
 
 		return (
 			<>
-				<section className="todoapp">
-					<Header
-						language={language}
-						handleChangeLanguage={this.handleChangeLanguage}
-						handleAddTodo={this.handleAddTodo}
-					/>
-					<List
-						todos={list}
-						filters={filters}
-						handleUpdateTodo={this.handleUpdateTodo}
-						handleToggleCompleteAllTodo={this.handleToggleCompleteAllTodo}
-						handleToggleCompleteTodo={this.handleToggleCompleteTodo}
-						handleDeleteTodo={this.handleDeleteTodo}
-					/>
-					<Footer
-						todos={list}
-						filters={filters}
-						handleFilterTodo={this.handleFilterTodo}
-						handleClearCompletedTodo={this.handleClearCompletedTodo}
-					/>
-				</section>
+				<h2 className="title-main">Todos</h2>
+				<div className="content-main">
+					<section className="todoapp">
+						<Header
+							language={language}
+							handleChangeLanguage={this.handleChangeLanguage}
+							handleAddTodo={this.handleAddTodo}
+						/>
+						<List
+							todos={list}
+							filters={filters}
+							handleUpdateTodo={this.handleUpdateTodo}
+							handleToggleCompleteAllTodo={this.handleToggleCompleteAllTodo}
+							handleToggleCompleteTodo={this.handleToggleCompleteTodo}
+							handleDeleteTodo={this.handleDeleteTodo}
+						/>
+						<Footer
+							todos={list}
+							filters={filters}
+							handleFilterTodo={this.handleFilterTodo}
+							handleClearCompletedTodo={this.handleClearCompletedTodo}
+						/>
+					</section>
+				</div>
 			</>
 		);
 	}
