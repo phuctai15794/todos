@@ -1,26 +1,52 @@
-import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
-import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
-const locationHelper = locationHelperBuilder({});
+export const isAuthenticated = (Component) => {
+	class CheckAuthenticated extends React.Component {
+		render() {
+			const { isLoggedIn, location } = this.props;
+			const redirectPath = (location.pathname && location.pathname !== '/' && `?back=${location.pathname}`) || '';
+			return <>{isLoggedIn ? <Component {...this.props} /> : <Redirect to={`/login${redirectPath}`} />}</>;
+		}
+	}
 
-export const userIsAuthenticated = connectedRouterRedirect({
-	// The url to redirect user to if they fail
-	redirectPath: '/login',
-	// If selector is true, wrapper will not redirect
-	// For example let's check that state contains user data
-	authenticatedSelector: (state) => state.user.isLoggedIn,
-	// A nice display name for this check
-	wrapperDisplayName: 'UserIsAuthenticated',
-});
+	const mapStateToProps = (state) => {
+		return {
+			isLoggedIn: state.user.isLoggedIn,
+		};
+	};
 
-export const userIsNotAuthenticated = connectedRouterRedirect({
-	// This sends the user either to the query param route if we have one, or to the landing page if none is specified and the user is already logged in
-	redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/',
-	// This prevents us from adding the query parameter when we send the user away from the login page
-	allowRedirectBack: false,
-	// If selector is true, wrapper will not redirect
-	// So if there is no user data, then we show the page
-	authenticatedSelector: (state) => !state.user.isLoggedIn,
-	// A nice display name for this check
-	wrapperDisplayName: 'UserIsNotAuthenticated',
-});
+	const mapDispatchToProps = (dispatch) => {
+		return {};
+	};
+
+	return connect(mapStateToProps, mapDispatchToProps)(withRouter(CheckAuthenticated));
+};
+
+export const isNotAuthenticated = (Component) => {
+	class CheckAuthenticated extends React.Component {
+		render() {
+			const { isLoggedIn, location } = this.props;
+			const { pathname, search } = location;
+			const queryParams = new URLSearchParams(search);
+			const redirectBack = queryParams.get('back');
+			const redirectPath = pathname !== '/login' ? pathname : redirectBack || '/';
+
+			return <>{!isLoggedIn ? <Component {...this.props} /> : <Redirect to={redirectPath} />}</>;
+		}
+	}
+
+	const mapStateToProps = (state) => {
+		return {
+			isLoggedIn: state.user.isLoggedIn,
+		};
+	};
+
+	const mapDispatchToProps = (dispatch) => {
+		return {};
+	};
+
+	return connect(mapStateToProps, mapDispatchToProps)(withRouter(CheckAuthenticated));
+};

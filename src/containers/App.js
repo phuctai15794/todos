@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/Authentication';
+import { isAuthenticated, isNotAuthenticated } from '../hoc/Authentication';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,9 +15,9 @@ class App extends React.Component {
 		return (
 			<>
 				<Router>
-					<Route path="/" component={Home} />
-					<Route path="/login" component={userIsNotAuthenticated(Login)} />
-					<Route path="/todos" component={userIsAuthenticated(Todos)} />
+					<Route path="/" exact component={isAuthenticated(Home)} />
+					<Route path="/login" component={isNotAuthenticated(Login)} />
+					<Route path="/todos" component={isAuthenticated(Todos)} />
 				</Router>
 				<ToastContainer
 					position="top-right"
