@@ -28,6 +28,7 @@ class Page extends Component {
 						<Route path="/todos" exact component={isAuthenticatedHoC(Todos)} />
 						<Route path="/404" component={NotFound} />
 						<Route
+							path="*"
 							component={() => {
 								return <Redirect to="/404" />;
 							}}
@@ -42,13 +43,13 @@ class Page extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		language: state.app.language,
+		language: state.app.language
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		changeLanguage: (language) => dispatch(appActions.CHANGE_LANGUAGE(language)),
+		changeLanguage: (language) => dispatch(appActions.CHANGE_LANGUAGE(language))
 	};
 };
 
