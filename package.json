@@ -1,5 +1,5 @@
 {
-    "name": "TodosRouterV5",
+    "name": "todos-with-router-v5",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
