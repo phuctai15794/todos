@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { userActions } from '../../../store/actions/rootActions';
 import Nav from './Nav';
 
-class Header extends Component {
+class Header extends React.Component {
 	handleChangeLanguage = (language) => {
 		const { handleChangeLanguage } = this.props;
 		handleChangeLanguage(language);

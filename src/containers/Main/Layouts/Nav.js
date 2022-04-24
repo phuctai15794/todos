@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-class Nav extends Component {
+class Nav extends React.Component {
 	render() {
 		return (
 			<>
 				<div className="nav">
-					<NavLink className="nav-brand" to="" title="Todos App">
+					<NavLink className="nav-brand" to="/" title="Todos App">
 						Todos App
 					</NavLink>
 					<div className="nav-list">

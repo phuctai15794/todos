@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticatedHoC, isNotAuthenticatedHoC } from '../../hoc/AuthenticationHoC';
@@ -10,7 +10,7 @@ import Todos from './Pages/Todos';
 import NotFound from './Layouts/NotFound';
 import Login from '../User/Login';
 
-class Page extends Component {
+class Page extends React.Component {
 	handleChangeLanguage = (language) => {
 		this.props.changeLanguage(language);
 	};
