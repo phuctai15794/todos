@@ -4,7 +4,10 @@
 			"home": "Trang chủ"
 		},
 		"others": {
-			"back-to-home": "Trở về trang chủ"
+			"or": "hoặc",
+			"back-to-home": "Trở về trang chủ",
+			"not-found-title": "Không tìm thấy trang",
+			"not-found-message": "Xin lỗi, đã xảy ra lỗi, không tìm thấy trang được yêu cầu!Sorry, an error has occured, Requested page not found!"
 		},
 		"todos": {
 			"title": "Nhập những việc cần làm ?",
@@ -26,7 +29,10 @@
 			"password": "Mật khẩu",
 			"enter-your-password": "Nhập mật khẩu của bạn",
 			"please-enter-your-password": "Vui lòng nhập mật khẩu",
+			"create-account": "Tạo tài khoản mới",
+			"signup": "Đăng ký",
 			"login": "Đăng nhập",
+			"login-failed": "Đăng nhập thất bại",
 			"logout": "Đăng xuất"
 		}
 	}

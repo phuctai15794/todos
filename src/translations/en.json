@@ -4,7 +4,10 @@
 			"home": "Home"
 		},
 		"others": {
-			"back-to-home": "Back to home"
+			"or": "or",
+			"back-to-home": "Back to home",
+			"not-found-title": "Page not found",
+			"not-found-message": "Sorry, an error has occured, Requested page not found!"
 		},
 		"todos": {
 			"title": "What needs to be done ?",
@@ -26,7 +29,10 @@
 			"password": "Password",
 			"enter-your-password": "Enter your password",
 			"please-enter-your-password": "Please enter your password",
+			"create-account": "Create a new user",
+			"signup": "Register",
 			"login": "Login",
+			"login-failed": "Login failed",
 			"logout": "Logout"
 		}
 	}

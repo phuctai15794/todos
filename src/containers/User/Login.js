@@ -79,7 +79,7 @@ class Login extends React.Component {
 				const { LoginUser } = this.props;
 				LoginUser(response);
 			} else {
-				message.text = 'Login failed';
+				message.text = 'app.user.login-failed';
 				message.type = 'error';
 			}
 		}
@@ -163,10 +163,14 @@ class Login extends React.Component {
 									>
 										<FormattedMessage id="app.user.login" />
 									</Button>
-									<br />
-									<NavLink className="text-secondary" to="">
-										<FormattedMessage id="app.others.back-to-home" />
-									</NavLink>
+									<div className="text-center">
+										<p className="mb-1">
+											<FormattedMessage id="app.others.or" />
+										</p>
+										<NavLink className="text-dark" to="/signup">
+											<FormattedMessage id="app.user.create-account" />
+										</NavLink>
+									</div>
 								</div>
 							</Form>
 						</CardBody>

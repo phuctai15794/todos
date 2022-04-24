@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { userActions } from '../../../store/actions/rootActions';
 import Nav from './Nav';
@@ -44,7 +45,15 @@ class Header extends Component {
 								</a>
 							</div>
 						) : (
-							''
+							<div className="user">
+								<NavLink className="text-secondary" to="/login">
+									<FormattedMessage id="app.user.login" />
+								</NavLink>
+								{' / '}
+								<NavLink className="text-secondary" to="/signup">
+									<FormattedMessage id="app.user.signup" />
+								</NavLink>
+							</div>
 						)}
 					</div>
 				</div>
