@@ -30,6 +30,6 @@ export const CLEAR_COMPLETED = () => ({
 });
 
 export const DELETE = (todo) => ({
-	type: actionTypes.DELETE,
+	type: actionTypes.TODOS_DELETE,
 	payload: todo,
 });
